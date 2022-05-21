@@ -1,0 +1,18 @@
+
+//import connection
+const connect = require('./db');
+
+//get users form db
+f();
+async function f() {
+    try {
+        const client = await connect();
+        const collection = client.db("psiho").collection("users");
+        const result = await collection.find({}).toArray();
+        console.log(result);
+        await client.close();
+    } catch (err) {
+        console.log(err);
+        await client.close();
+    }
+}
